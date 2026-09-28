@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ДетальПлюс — автозапчасти с подбором по марке и VIN</title>
+<meta name="description" content="Автозапчасти для иномарок и отечественных авто: подбор по марке, модели и VIN за 15 минут, доставка по городу в день заказа.">
+<meta property="og:title" content="ДетальПлюс — автозапчасти с подбором за 15 минут">
+<meta property="og:description" content="Оставьте марку и модель — пришлём варианты от оригинала до аналога с ценами.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#14171c;--muted:#5d6570;--line:#e3e6ea;--acc:#ff5a1f;--acc2:#1f2937;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:rgba(20,23,28,.96);color:#fff}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.3px}.logo b{color:var(--acc)}
+nav{display:flex;gap:22px;font-size:14px}nav a{text-decoration:none;opacity:.8}nav a:hover{opacity:1}
+.hphone{font-weight:600;text-decoration:none;white-space:nowrap}
+.btn{display:inline-block;border:0;cursor:pointer;background:var(--acc);color:#fff;font:600 16px Manrope,sans-serif;padding:14px 26px;border-radius:10px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(255,90,31,.35)}
+.hero{background:linear-gradient(120deg,#14171c 0%,#1f2937 60%,#2b3444 100%);color:#fff;padding:64px 0 72px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.tag{display:inline-block;background:rgba(255,90,31,.15);color:#ffb08f;border:1px solid rgba(255,90,31,.4);padding:4px 12px;border-radius:99px;font-size:13px;margin-bottom:18px}
+h1{font-size:44px;line-height:1.1;letter-spacing:-1px;margin-bottom:18px}h1 span{color:var(--acc)}
+.lead{font-size:18px;opacity:.85;margin-bottom:26px;max-width:540px}
+.facts{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}.facts div{font-size:14px;opacity:.8}.facts b{display:block;font-size:24px;opacity:1;color:#fff}
+.picker{background:var(--card);color:var(--ink);border-radius:16px;padding:26px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.picker h3{font-size:20px;margin-bottom:4px}.picker p{font-size:14px;color:var(--muted);margin-bottom:16px}
+label{display:block;font-size:13px;font-weight:600;margin:10px 0 5px}
+select,input,textarea{width:100%;font:15px Manrope,sans-serif;padding:12px 13px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink)}
+select:focus,input:focus,textarea:focus{outline:2px solid var(--acc);border-color:transparent}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.picker .btn{width:100%;margin-top:16px}
+.small{font-size:12px;color:var(--muted);margin-top:10px;text-align:center}
+section{padding:72px 0}
+h2{font-size:32px;letter-spacing:-.6px;margin-bottom:10px}.sub{color:var(--muted);margin-bottom:34px;max-width:620px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;cursor:pointer;transition:border-color .15s,transform .15s}
+.cat:hover{border-color:var(--acc);transform:translateY(-2px)}
+.cat .ic{font-size:30px;margin-bottom:10px}.cat h4{font-size:16px;margin-bottom:4px}.cat span{font-size:13px;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{position:relative;padding:22px;background:var(--card);border-radius:14px;border:1px solid var(--line)}
+.step:before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--acc);color:#fff;font-weight:800;margin-bottom:12px}
+.step h4{margin-bottom:6px}.step p{font-size:14px;color:var(--muted)}
+.dark{background:var(--acc2);color:#fff}.dark .sub{color:#b8c0cc}
+.adv{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.adv div{padding:22px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.adv b{display:block;font-size:28px;color:var(--acc);margin-bottom:4px}.adv p{font-size:14px;color:#c8cfd9}
+.brands{display:flex;flex-wrap:wrap;gap:10px}.brands span{padding:8px 16px;border:1px solid var(--line);border-radius:99px;background:#fff;font-size:14px;font-weight:600}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:600}.faq details p{margin-top:10px;color:var(--muted);font-size:15px}
+.final .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.final form{background:var(--card);border-radius:16px;padding:26px;border:1px solid var(--line)}
+footer{background:#0f1115;color:#8a93a0;font-size:13px;padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--ok);color:#fff;padding:14px 22px;border-radius:12px;font-weight:600;transition:transform .3s;z-index:20;max-width:92vw;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.demo{background:#fff4ec;color:#9a3b12;text-align:center;font-size:13px;padding:6px 12px}
+@media(max-width:900px){.hero .wrap,.final .wrap{grid-template-columns:1fr}.cats{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr 1fr}.adv{grid-template-columns:1fr}nav{display:none}h1{font-size:34px}}
+@media(max-width:520px){.wrap{padding:0 16px}.cats,.steps{grid-template-columns:1fr}.row2{grid-template-columns:1fr}h1{font-size:29px}h2{font-size:26px}section{padding:52px 0}.hphone{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="demo">Прототип лендинга для теста ниши. Название, телефон и цифры заменяются на ваши.</div>
+<header><div class="wrap">
+  <div class="logo">Деталь<b>Плюс</b></div>
+  <nav><a href="#cats">Каталог</a><a href="#how">Как заказать</a><a href="#adv">Почему мы</a><a href="#faq">Вопросы</a></nav>
+  <a class="hphone" href="tel:+70000000000">+7 (000) 000-00-00</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="tag">Подбор за 15 минут · доставка сегодня</span>
+    <h1>Запчасти для вашего авто <span>без поиска по каталогам</span></h1>
+    <p class="lead">Укажите марку, модель и что нужно. Менеджер подберёт оригинал и 2–3 проверенных аналога с ценами и сроками и пришлёт в мессенджер.</p>
+    <a class="btn" href="#pick">Подобрать запчасть</a>
+    <div class="facts"><div><b>50 000+</b>позиций на складе</div><div><b>15 мин</b>на подбор</div><div><b>1 год</b>гарантия на детали</div></div>
+  </div>
+  <form class="picker" id="pick" data-goal="pick_form">
+    <h3>Быстрый подбор</h3>
+    <p>Ответим в течение 15 минут в рабочее время</p>
+    <div class="row2">
+      <div><label for="brand">Марка</label><select id="brand" required><option value="">Выберите</option></select></div>
+      <div><label for="model">Модель</label><select id="model" required disabled><option value="">Сначала марка</option></select></div>
+    </div>
+    <div class="row2">
+      <div><label for="year">Год</label><select id="year"><option value="">Не важно</option></select></div>
+      <div><label for="part">Что нужно</label><select id="part"><option>Тормозная система</option><option>Подвеска</option><option>ТО: фильтры и масла</option><option>Двигатель</option><option>Электрика</option><option>Кузов и оптика</option><option>Другое</option></select></div>
+    </div>
+    <label for="vin">VIN, если есть под рукой</label><input id="vin" maxlength="17" placeholder="17 символов, ускорит подбор">
+    <label for="phone1">Телефон</label><input id="phone1" type="tel" required placeholder="+7 (___) ___-__-__">
+    <button class="btn" type="submit">Получить варианты с ценами</button>
+    <div class="small">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</div>
+  </form>
+</div></section>
+
+<section id="cats"><div class="wrap">
+  <h2>Что чаще всего ищут</h2>
+  <p class="sub">Нажмите на группу, и она подставится в форму подбора.</p>
+  <div class="cats">
+    <div class="cat" data-part="Тормозная система"><div class="ic">🛑</div><h4>Тормоза</h4><span>колодки, диски, суппорты</span></div>
+    <div class="cat" data-part="Подвеска"><div class="ic">🔩</div><h4>Подвеска</h4><span>амортизаторы, рычаги, стойки</span></div>
+    <div class="cat" data-part="ТО: фильтры и масла"><div class="ic">🛢️</div><h4>ТО</h4><span>масла, фильтры, свечи</span></div>
+    <div class="cat" data-part="Двигатель"><div class="ic">⚙️</div><h4>Двигатель</h4><span>ремни ГРМ, помпы, прокладки</span></div>
+    <div class="cat" data-part="Электрика"><div class="ic">🔋</div><h4>Электрика</h4><span>АКБ, генераторы, датчики</span></div>
+    <div class="cat" data-part="Кузов и оптика"><div class="ic">💡</div><h4>Кузов и оптика</h4><span>фары, зеркала, бамперы</span></div>
+    <div class="cat" data-part="Другое"><div class="ic">❄️</div><h4>Охлаждение</h4><span>радиаторы, термостаты</span></div>
+    <div class="cat" data-part="Другое"><div class="ic">🧰</div><h4>Другое</h4><span>опишите, найдём</span></div>
+  </div>
+</div></section>
+
+<section id="how" style="padding-top:0"><div class="wrap">
+  <h2>Как заказать</h2>
+  <p class="sub">Без регистрации и корзины: вы оставляете заявку, дальше работаем мы.</p>
+  <div class="steps">
+    <div class="step"><h4>Заявка</h4><p>Марка, модель и что нужно. VIN по желанию.</p></div>
+    <div class="step"><h4>Подбор</h4><p>Через 15 минут присылаем оригинал и аналоги с ценами.</p></div>
+    <div class="step"><h4>Выбор</h4><p>Выбираете вариант, оплата при получении или по ссылке.</p></div>
+    <div class="step"><h4>Доставка</h4><p>Курьер сегодня или самовывоз со склада.</p></div>
+  </div>
+</div></section>
+
+<section class="dark" id="adv"><div class="wrap">
+  <h2>Почему заказывают у нас</h2>
+  <p class="sub">Цифры для примера, на реальном сайте подставляются ваши.</p>
+  <div class="adv">
+    <div><b>3 варианта</b><p>под любой бюджет: оригинал, премиум-аналог, эконом</p></div>
+    <div><b>0 ₽</b><p>за подбор, платите только за деталь</p></div>
+    <div><b>14 дней</b><p>на возврат, если деталь не подошла</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Марки, с которыми работаем</h2>
+  <p class="sub">Иномарки, китайские и отечественные авто.</p>
+  <div class="brands" id="brandList"></div>
+</div></section>
+
+<section class="faq" id="faq" style="padding-top:0"><div class="wrap">
+  <h2>Частые вопросы</h2>
+  <details><summary>Не знаю точное название детали</summary><p>Опишите своими словами или приложите фото в мессенджере, менеджер разберётся.</p></details>
+  <details><summary>Чем аналог хуже оригинала?</summary><p>Проверенные аналоги делают на тех же заводах. Мы предлагаем только бренды с гарантией и объясняем разницу в цене.</p></details>
+  <details><summary>Как быстро доставите?</summary><p>Позиции со склада привозим в день заказа, под заказ от 1 до 5 дней. Срок указываем сразу в подборе.</p></details>
+  <details><summary>Можно ли вернуть деталь?</summary><p>Да, в течение 14 дней, если сохранены упаковка и товарный вид.</p></details>
+</div></section>
+
+<section class="final" style="padding-top:0"><div class="wrap">
+  <div><h2>Не нашли нужное?</h2><p class="sub" style="margin-bottom:0">Оставьте телефон, перезвоним и подберём по VIN, даже редкие позиции.</p></div>
+  <form id="call" data-goal="call_form">
+    <label for="name2">Имя</label><input id="name2" placeholder="Как к вам обращаться">
+    <label for="phone2">Телефон</label><input id="phone2" type="tel" required placeholder="+7 (___) ___-__-__">
+    <label for="msg2">Что ищете</label><textarea id="msg2" rows="3" placeholder="Например: передние колодки Kia Rio 2019"></textarea>
+    <button class="btn" type="submit" style="width:100%;margin-top:16px">Перезвоните мне</button>
+  </form>
+</div></section>
+
+<footer><div class="wrap"><div>© ДетальПлюс, автозапчасти</div><div>Прототип: заявки уходят в Telegram и на почту, цели в Яндекс Метрике</div></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const cars={"Toyota":["Camry","Corolla","RAV4","Land Cruiser"],"Kia":["Rio","Ceed","Sportage","Optima"],"Hyundai":["Solaris","Creta","Tucson","Elantra"],"Volkswagen":["Polo","Tiguan","Passat","Golf"],"Skoda":["Octavia","Rapid","Kodiaq"],"Renault":["Logan","Duster","Sandero"],"Lada":["Vesta","Granta","Niva Travel","Largus"],"Nissan":["Qashqai","X-Trail","Almera"],"Mitsubishi":["Outlander","ASX","Lancer"],"Ford":["Focus","Mondeo","Kuga"],"BMW":["3 серии","5 серии","X5"],"Mercedes-Benz":["C-класс","E-класс","GLC"],"Chery":["Tiggo 4","Tiggo 7 Pro","Tiggo 8"],"Haval":["Jolion","F7","H6"],"Geely":["Coolray","Atlas","Monjaro"]};
+const $=s=>document.querySelector(s);
+const brand=$('#brand'),model=$('#model'),year=$('#year');
+Object.keys(cars).forEach(b=>{brand.add(new Option(b,b));const s=document.createElement('span');s.textContent=b;$('#brandList').append(s)});
+for(let y=new Date().getFullYear();y>=2000;y--)year.add(new Option(y,y));
+brand.onchange=()=>{model.innerHTML='';const list=cars[brand.value]||[];model.disabled=!list.length;model.add(new Option(list.length?'Выберите':'Сначала марка',''));list.forEach(m=>model.add(new Option(m,m)))};
+document.querySelectorAll('.cat').forEach(c=>c.onclick=()=>{$('#part').value=c.dataset.part;$('#pick').scrollIntoView({behavior:'smooth',block:'center'});brand.focus()});
+function mask(e){let d=e.target.value.replace(/\D/g,'').replace(/^[78]/,'').slice(0,10);let r='+7';if(d.length)r+=' ('+d.slice(0,3);if(d.length>=3)r+=') '+d.slice(3,6);if(d.length>=6)r+='-'+d.slice(6,8);if(d.length>=8)r+='-'+d.slice(8,10);e.target.value=r}
+['#phone1','#phone2'].forEach(s=>$(s).addEventListener('input',mask));
+$('#vin').addEventListener('input',e=>e.target.value=e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g,''));
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),4500)}
+document.querySelectorAll('form').forEach(f=>f.addEventListener('submit',e=>{
+  e.preventDefault();
+  const ph=f.querySelector('input[type=tel]');
+  if(ph.value.replace(/\D/g,'').length<11){ph.focus();toast('Проверьте номер телефона');return}
+  // На рабочем сайте: отправка в Telegram-бот и на почту + ym(ID,'reachGoal',f.dataset.goal)
+  toast(f.id==='pick'?`Заявка принята: ${brand.value} ${model.value}, ${$('#part').value}. Варианты придут в течение 15 минут.`:'Спасибо! Перезвоним в течение 15 минут.');
+  f.reset();model.disabled=true;
+}));
+</script>
+</body>
+</html>
